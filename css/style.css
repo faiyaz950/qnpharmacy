@@ -320,7 +320,14 @@ h2.sec-title {
 }
 .nav-logo-text { line-height: 1.1; }
 .nav-logo-text .ln { font-family: var(--font-disp); font-size: 1.05rem; font-weight: 700; letter-spacing: 2px; }
-.nav-logo-text .lt { font-size: .52rem; letter-spacing: .3px; color: var(--gold); display: block; margin-top: 2px; line-height: 1.2; }
+.nav-logo-text .lt {
+  display: block; margin-top: 3px;
+  font-family: var(--font-head); font-style: italic;
+  font-size: .72rem; letter-spacing: .5px; line-height: 1;
+  background: var(--gold-grad-simple); background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
 .nav-logo-text .ls { font-size: .5rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--w30); display: block; margin-top: 1px; }
 
 .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
