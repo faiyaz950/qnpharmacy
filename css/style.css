@@ -943,7 +943,8 @@ h2.sec-title {
 /* ── Tablet / Large Mobile ── */
 @media (max-width: 1024px) {
   /* Nav */
-  .nav-links, .nav-right { display: none; }
+  .nav-links { display: none; }
+  .nav-ph, .nav-right .btn-gold { display: none; }
   .ham { display: flex; }
 
   /* Stats */
