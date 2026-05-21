@@ -320,7 +320,8 @@ h2.sec-title {
 }
 .nav-logo-text { line-height: 1.1; }
 .nav-logo-text .ln { font-family: var(--font-disp); font-size: 1.05rem; font-weight: 700; letter-spacing: 2px; }
-.nav-logo-text .ls { font-size: .55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--w30); display: block; margin-top: 2px; }
+.nav-logo-text .lt { font-size: .52rem; letter-spacing: .3px; color: var(--gold); display: block; margin-top: 2px; line-height: 1.2; }
+.nav-logo-text .ls { font-size: .5rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--w30); display: block; margin-top: 1px; }
 
 .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
 .nav-links a {
@@ -1155,6 +1156,7 @@ h2.sec-title {
   /* Nav logo */
   .nav-logo img { width: 36px; height: 36px; }
   .nav-logo-text .ln { font-size: .82rem; }
+  .nav-logo-text .lt,
   .nav-logo-text .ls { display: none; }
 
   /* Hero */
