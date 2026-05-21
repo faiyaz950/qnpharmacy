@@ -941,9 +941,19 @@ html.light {
   --b-gold: 1px solid rgba(212,175,55,0.40);
   --b-gold-b: 1px solid rgba(212,175,55,0.70);
 }
-html.light .nav.solid { background: rgba(255,255,255,0.96); }
+html.light .nav.solid { background: rgba(6,6,6,0.96); }
+html.light .nav-links a { color: rgba(255,255,255,0.70); }
+html.light .nav-links a:hover,
+html.light .nav-links a.on { color: var(--gold-2); }
+html.light .nav-ph { color: var(--gold-2); }
+html.light .ham,
+html.light .theme-toggle { color: var(--gold-2); border-color: rgba(212,175,55,0.30); }
+html.light .drawer { background: #141414; border-left-color: rgba(212,175,55,0.25); }
+html.light .drawer-links li a { color: rgba(255,255,255,0.70); border-bottom-color: rgba(212,175,55,0.20); }
+html.light .drawer-links li a:hover { color: var(--gold-2); }
+html.light .drawer-close { color: var(--gold-2); border-color: rgba(212,175,55,0.30); }
+html.light .drawer-ph { color: var(--gold-2); }
 html.light .btn-gold { color: #1A1410; }
-html.light .drawer { background: #FFFFFF; }
 html.light ::-webkit-scrollbar-track { background: var(--dark-2); }
 
 /* ===== WHATSAPP FLOAT ===== */
