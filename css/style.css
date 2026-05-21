@@ -911,6 +911,41 @@ h2.sec-title {
 .foot-dev { font-size: .72rem; color: var(--w20); }
 .foot-dev span { color: var(--gold-4); font-weight: 500; }
 
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle {
+  background: none; border: 1px solid var(--gold-a30);
+  color: var(--gold-2); width: 40px; height: 40px; border-radius: var(--rad);
+  cursor: none; font-size: .9rem; display: flex; align-items: center; justify-content: center;
+  transition: var(--tr-f);
+}
+.theme-toggle:hover { background: var(--gold-a08); }
+
+/* ===== LIGHT MODE ===== */
+html.light {
+  --dark-0: #FAF8F2;
+  --dark-1: #F5F1E8;
+  --dark-2: #EDE8DA;
+  --dark-3: #FFFFFF;
+  --dark-4: #F8F5EE;
+  --dark-5: #EDE8DC;
+  --white: #1A1410;
+  --w90: rgba(20,16,8,0.90);
+  --w70: rgba(20,16,8,0.70);
+  --w50: rgba(20,16,8,0.50);
+  --w40: rgba(20,16,8,0.40);
+  --w30: rgba(20,16,8,0.30);
+  --w20: rgba(20,16,8,0.20);
+  --w10: rgba(20,16,8,0.10);
+  --w05: rgba(20,16,8,0.05);
+  --sh-card: 0 25px 70px rgba(0,0,0,0.10), 0 0 0 1px rgba(212,175,55,0.18);
+  --b-gold: 1px solid rgba(212,175,55,0.40);
+  --b-gold-b: 1px solid rgba(212,175,55,0.70);
+}
+html.light .nav.solid { background: rgba(255,255,255,0.96); }
+html.light .btn-gold { color: #1A1410; }
+html.light .drawer { background: #FFFFFF; }
+html.light ::-webkit-scrollbar-track { background: var(--dark-2); }
+
 /* ===== WHATSAPP FLOAT ===== */
 .wa-float {
   position: fixed; bottom: 28px; right: 28px; z-index: 888;
@@ -1018,7 +1053,7 @@ h2.sec-title {
   /* Cursor off */
   .cursor, .cursor-ring { display: none; }
   body { cursor: auto; }
-  .btn, .ham, .wa-float,
+  .btn, .ham, .theme-toggle, .wa-float,
   .drawer-close, .lb-close,
   .f-submit, .vid-play-ov { cursor: pointer; }
 

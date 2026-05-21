@@ -167,6 +167,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ─── THEME TOGGLE ─── */
+  const themeBtn = document.querySelector('.theme-toggle');
+  function updateThemeIcon() {
+    if (!themeBtn) return;
+    const isLight = document.documentElement.classList.contains('light');
+    themeBtn.innerHTML = isLight ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
+  }
+  updateThemeIcon();
+  themeBtn?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light');
+    localStorage.setItem('qnpharma-theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    updateThemeIcon();
+  });
+
   /* ─── GOLD SHIMMER ON HOVER for buttons ─── */
   document.querySelectorAll('.btn-gold').forEach(btn => {
     btn.addEventListener('mousemove', e => {
