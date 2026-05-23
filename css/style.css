@@ -882,6 +882,21 @@ h2.sec-title {
 .foot-logo img { width: 58px; height: 58px; object-fit: contain; }
 .foot-desc { font-size: .875rem; color: var(--w40); line-height: 1.85; max-width: 260px; margin-bottom: 14px; }
 .foot-hi { font-size: .875rem; color: var(--gold-5); font-style: italic; }
+.foot-follow { margin-top: 22px; }
+.foot-follow h4 {
+  font-size: .68rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-2); margin-bottom: 16px; padding-bottom: 10px; position: relative;
+}
+.foot-follow h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 28px; height: 1px; background: var(--gold-grad-simple); }
+.foot-social { display: flex; gap: 12px; }
+.foot-social a {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(212,175,55,.08); border: 1px solid rgba(212,175,55,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; color: rgba(212,175,55,.85); text-decoration: none;
+  transition: var(--tr);
+}
+.foot-social a:hover { background: rgba(212,175,55,.18); color: var(--gold-2); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(212,175,55,.2); }
 .foot-col h4 {
   font-size: .68rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
   color: var(--gold-2); margin-bottom: 22px; padding-bottom: 10px; position: relative;
