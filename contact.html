@@ -16,9 +16,22 @@
       border: 1px solid rgba(212,175,55,.25); box-shadow: 0 25px 70px rgba(0,0,0,.55);
       position: relative;
     }
-    .map-wrap iframe { width: 100%; height: 360px; display: block; border: none; filter: grayscale(40%) brightness(.85); }
+    .map-wrap iframe { width: 100%; height: 360px; display: block; border: none; filter: grayscale(40%) brightness(.85); pointer-events: none; }
+    .map-open {
+      position: absolute; inset: 0; z-index: 4; cursor: pointer;
+      background: transparent; text-decoration: none;
+    }
+    .map-open-hint {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 5;
+      padding: 10px 18px; border-radius: 3px; pointer-events: none;
+      background: rgba(8,8,8,.88); border: 1px solid rgba(212,175,55,.35);
+      font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(212,175,55,.9); white-space: nowrap;
+      opacity: 0; transition: opacity .25s ease;
+    }
+    .map-wrap:hover .map-open-hint { opacity: 1; }
     .map-badge {
-      position: absolute; top: 18px; left: 18px;
+      position: absolute; top: 18px; left: 18px; z-index: 5; pointer-events: none;
       background: rgba(8,8,8,.92); backdrop-filter: blur(12px);
       border: 1px solid rgba(212,175,55,.3);
       padding: 14px 18px; border-radius: 3px;
@@ -247,6 +260,14 @@
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="QN PHARMA — Nai Sadak More, Patna City 800008">
         </iframe>
+        <a
+          href="https://www.google.com/maps/place/QN+PHARMA/@25.5977981,85.2092932,17z"
+          class="map-open"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open QN PHARMA in Google Maps">
+        </a>
+        <span class="map-open-hint"><i class="fa fa-external-link-alt" style="margin-right:6px;"></i> Open in Google Maps</span>
         <div class="map-badge">
           <p><i class="fa fa-map-marker-alt" style="margin-right:5px;"></i>Our Location</p>
           <h3>QN PHARMA · Patna City, 800008</h3>
