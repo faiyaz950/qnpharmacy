@@ -159,17 +159,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ─── VIDEO PLAY TOGGLE ─── */
-  document.querySelectorAll('.vid-play-ov').forEach(ov => {
-    ov.addEventListener('click', () => {
-      const video = ov.previousElementSibling || ov.closest('.vid-wrap')?.querySelector('video');
-      if (!video) return;
-      video.muted = false;
-      video.volume = 0.85;
-      video.play().then(() => ov.classList.add('gone')).catch(() => {});
-      video.addEventListener('pause', () => ov.classList.remove('gone'));
-      video.addEventListener('ended', () => ov.classList.remove('gone'));
+  /* ─── VIDEO + qnmusic.mp3 (synced) ─── */
+  document.querySelectorAll('.vid-wrap').forEach(wrap => {
+    const ov    = wrap.querySelector('.vid-play-ov');
+    const video = wrap.querySelector('video');
+    const audio = wrap.querySelector('.vid-music');
+    if (!ov || !video) return;
+
+    const showOverlay = () => ov.classList.remove('gone');
+    const hideOverlay = () => ov.classList.add('gone');
+
+    const stopAll = () => {
+      video.pause();
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+      showOverlay();
+    };
+
+    const playAll = async () => {
+      video.muted = true;
+      try {
+        if (audio) {
+          audio.currentTime = video.ended || video.currentTime < 0.05 ? 0 : video.currentTime;
+          audio.volume = 1;
+          await audio.play();
+        }
+        await video.play();
+        hideOverlay();
+      } catch {
+        if (audio) audio.pause();
+        showOverlay();
+      }
+    };
+
+    ov.addEventListener('click', playAll);
+
+    video.addEventListener('pause', () => {
+      if (!video.ended) audio?.pause();
     });
+
+    video.addEventListener('ended', stopAll);
   });
 
   /* ─── CONTACT FORM ─── */
