@@ -115,32 +115,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: .5 });
   statNums.forEach(el => cntObs.observe(el));
 
-  /* ─── LIGHTBOX ─── */
+  /* ─── LIGHTBOX WITH NAVIGATION ─── */
   const lb    = document.querySelector('.lb');
   const lbImg = document.querySelector('.lb-img');
   const lbClose = document.querySelector('.lb-close');
+  const lbPrev = document.querySelector('.lb-prev');
+  const lbNext = document.querySelector('.lb-next');
+  const lbCounter = document.querySelector('.lb-counter');
   if (lb) {
-    document.querySelectorAll('.gal-item[data-src]').forEach(item => {
+    const galItems = Array.from(document.querySelectorAll('.gal-item[data-src]'));
+    let currentIndex = 0;
+
+    function showImage(index) {
+      if (galItems.length === 0) return;
+      currentIndex = (index + galItems.length) % galItems.length;
+      lbImg.src = galItems[currentIndex].dataset.src;
+      if (lbCounter) lbCounter.textContent = `${currentIndex + 1} / ${galItems.length}`;
+    }
+
+    galItems.forEach((item, idx) => {
       item.addEventListener('click', () => {
-        lbImg.src = item.dataset.src;
+        currentIndex = idx;
+        showImage(currentIndex);
         lb.classList.add('on');
         document.body.style.overflow = 'hidden';
       });
     });
+
     const closeLb = () => { lb.classList.remove('on'); document.body.style.overflow = ''; };
+    const prevImg = () => showImage(currentIndex - 1);
+    const nextImg = () => showImage(currentIndex + 1);
+
     lbClose?.addEventListener('click', closeLb);
+    lbPrev?.addEventListener('click', e => { e.stopPropagation(); prevImg(); });
+    lbNext?.addEventListener('click', e => { e.stopPropagation(); nextImg(); });
     lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+    
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('on')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') prevImg();
+      if (e.key === 'ArrowRight') nextImg();
+    });
   }
 
   /* ─── VIDEO PLAY TOGGLE ─── */
   document.querySelectorAll('.vid-play-ov').forEach(ov => {
     ov.addEventListener('click', () => {
       const video = ov.previousElementSibling || ov.closest('.vid-wrap')?.querySelector('video');
-      if (video) {
-        video.play(); ov.classList.add('gone');
-        video.addEventListener('pause', () => ov.classList.remove('gone'), { once: true });
-      }
+      if (!video) return;
+      video.muted = false;
+      video.volume = 0.85;
+      video.play().then(() => ov.classList.add('gone')).catch(() => {});
+      video.addEventListener('pause', () => ov.classList.remove('gone'));
+      video.addEventListener('ended', () => ov.classList.remove('gone'));
     });
   });
 
